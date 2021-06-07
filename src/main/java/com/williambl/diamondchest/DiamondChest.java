@@ -1,7 +1,7 @@
 package com.williambl.diamondchest;
 
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
+import com.williambl.diamondchest.client.DiamondChestBlockEntityRenderer;
+import com.williambl.diamondchest.client.DiamondChestItemStackRenderer;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -9,30 +9,19 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.registry.Registry;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Set;
-import java.util.stream.Collectors;
-
 @Mod("diamond_chest")
-@Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class DiamondChest
 {
     private static final Logger LOGGER = LogManager.getLogger();
@@ -53,14 +42,19 @@ public class DiamondChest
 
     public static final RegistryObject<Item> DIAMOND_CHEST_ITEM
             = itemRegistry.register("diamond_chest",
-            () -> new BlockItem(DIAMOND_CHEST_BLOCK.get(), new Item.Properties().tab(ItemGroup.TAB_DECORATIONS))
+            () -> new BlockItem(DIAMOND_CHEST_BLOCK.get(), new Item.Properties().tab(ItemGroup.TAB_DECORATIONS).setISTER(() -> DiamondChestItemStackRenderer::new))
     );
 
     public DiamondChest() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+        bus.addListener(this::clientSetup);
         MinecraftForge.EVENT_BUS.register(this);
         blockRegistry.register(bus);
         blockEntityTypeRegistry.register(bus);
         itemRegistry.register(bus);
+    }
+
+    private void clientSetup(FMLClientSetupEvent event) {
+        ClientRegistry.bindTileEntityRenderer(DIAMOND_CHEST_BLOCK_ENTITY_TYPE.get(), DiamondChestBlockEntityRenderer::new);
     }
 }

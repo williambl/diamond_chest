@@ -9,6 +9,8 @@ import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.state.properties.ChestType;
 import net.minecraft.util.ResourceLocation;
 
+import javax.annotation.Nonnull;
+
 @MethodsReturnNonnullByDefault
 public class DiamondChestBlockEntityRenderer extends ChestTileEntityRenderer<DiamondChestBlockEntity> {
     public static final RenderMaterial SINGLE_MATERIAL = chestMaterial("single");
@@ -20,8 +22,8 @@ public class DiamondChestBlockEntityRenderer extends ChestTileEntityRenderer<Dia
     }
 
     @Override
-    protected RenderMaterial getMaterial(DiamondChestBlockEntity p_getMaterial_1_, ChestType p_getMaterial_2_) {
-        switch(p_getMaterial_2_) {
+    protected RenderMaterial getMaterial(@Nonnull DiamondChestBlockEntity chest, ChestType type) {
+        switch(type) {
             case LEFT:
                 return DOUBLE_LEFT_MATERIAL;
             case RIGHT:

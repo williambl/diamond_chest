@@ -6,10 +6,10 @@ import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(value = Dist.CLIENT, bus=Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = "diamond_chest", bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DiamondChestClient {
     @SubscribeEvent
-    public void onTextureStitch(TextureStitchEvent.Pre event) {
+    public static void onTextureStitch(TextureStitchEvent.Pre event) {
         if (!event.getMap().location().equals(Atlases.CHEST_SHEET)) return;
 
         event.addSprite(DiamondChestBlockEntityRenderer.SINGLE_MATERIAL.texture());

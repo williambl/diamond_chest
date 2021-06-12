@@ -9,15 +9,15 @@ import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.ItemStack;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @MethodsReturnNonnullByDefault
 public class DiamondChestItemStackRenderer extends ItemStackTileEntityRenderer {
-    private DiamondChestBlockEntity chest = null;
+    private final Map<String, DiamondChestBlockEntity> chests = new HashMap<>();
 
     @Override
     public void renderByItem(ItemStack p_239207_1_, ItemCameraTransforms.TransformType p_239207_2_, MatrixStack matrixStack, IRenderTypeBuffer buffer, int light, int overlay) {
-        if (chest == null) {
-            chest = new DiamondChestBlockEntity();
-        }
-        TileEntityRendererDispatcher.instance.renderItem(chest, matrixStack, buffer, light, overlay);
+        TileEntityRendererDispatcher.instance.renderItem(chests.computeIfAbsent(p_239207_1_.getItem().getRegistryName().getPath(), DiamondChestBlockEntity::new), matrixStack, buffer, light, overlay);
     }
 }

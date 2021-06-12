@@ -12,7 +12,7 @@ public class DiamondChestClient {
     public static void onTextureStitch(TextureStitchEvent.Pre event) {
         if (!event.getMap().location().equals(Atlases.CHEST_SHEET)) return;
 
-        event.addSprite(DiamondChestBlockEntityRenderer.SINGLE_MATERIAL.texture());
+        DiamondChestBlockEntityRenderer.SINGLE_MATERIALS.values().forEach(it -> event.addSprite(it.texture()));
         event.addSprite(DiamondChestBlockEntityRenderer.DOUBLE_LEFT_MATERIAL.texture());
         event.addSprite(DiamondChestBlockEntityRenderer.DOUBLE_RIGHT_MATERIAL.texture());
     }

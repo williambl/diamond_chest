@@ -1,5 +1,20 @@
 {
   "block.diamond_chest.diamond_chest": "Diamond Chest",
   "container.diamond_chest": "Diamond Chest",
-  "container.diamond_chest.double": "Double Diamond Chest"
+  "container.diamond_chest.double": "Double Diamond Chest",
+  "block.diamond_chest.end_chest": "End Chest",
+  "container.end_chest": "End Chest",
+  "container.end_chest.double": "Double End Chest",
+  "block.diamond_chest.iron_chest": "Iron Chest",
+  "container.iron_chest": "Iron Chest",
+  "container.iron_chest.double": "Double Iron Chest",
+  "block.diamond_chest.nether_chest": "Nether Chest",
+  "container.nether_chest": "Nether Chest",
+  "container.nether_chest.double": "Double Nether Chest",
+  "block.diamond_chest.super_op_chest": "Super OP Chest",
+  "container.super_op_chest": "Super OP Chest",
+  "container.super_op_chest.double": "Double Super OP Chest",
+  "block.diamond_chest.wood_chest": "Wood Chest",
+  "container.wood_chest": "Wood Chest",
+  "container.wood_chest.double": "Double Wood Chest"
 }

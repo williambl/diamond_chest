@@ -29,21 +29,19 @@ public class DiamondChest
     private static final DeferredRegister<TileEntityType<?>> blockEntityTypeRegistry = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, "diamond_chest");
     private static final DeferredRegister<Item> itemRegistry = DeferredRegister.create(ForgeRegistries.ITEMS, "diamond_chest");
 
-    public static final RegistryObject<Block> DIAMOND_CHEST_BLOCK
-            = blockRegistry.register("diamond_chest",
-            () -> new DiamondChestBlock(AbstractBlock.Properties.copy(Blocks.DIAMOND_BLOCK))
-    );
+    public static final RegistryObject<Block> DIAMOND_CHEST = register("diamond_chest", Blocks.DIAMOND_BLOCK);
+    public static final RegistryObject<Block> SUPER_OP_CHEST = register("super_op_chest", Blocks.DIAMOND_BLOCK);
+    public static final RegistryObject<Block> NETHER_CHEST = register("nether_chest", Blocks.NETHER_BRICKS);
+    public static final RegistryObject<Block> END_CHEST = register("end_chest", Blocks.END_STONE);
+    public static final RegistryObject<Block> WOOD_CHEST = register("wood_chest", Blocks.OAK_WOOD);
+    public static final RegistryObject<Block> IRON_CHEST = register("iron_chest", Blocks.IRON_BLOCK);
 
     @SuppressWarnings("ConstantConditions")
     public static final RegistryObject<TileEntityType<DiamondChestBlockEntity>> DIAMOND_CHEST_BLOCK_ENTITY_TYPE
             = blockEntityTypeRegistry.register("diamond_chest", () ->
-            TileEntityType.Builder.of(DiamondChestBlockEntity::new, DIAMOND_CHEST_BLOCK.get()).build(null)
+            TileEntityType.Builder.of(DiamondChestBlockEntity::new, DIAMOND_CHEST.get(), SUPER_OP_CHEST.get(), NETHER_CHEST.get(), END_CHEST.get(), WOOD_CHEST.get(), IRON_CHEST.get()).build(null)
     );
 
-    public static final RegistryObject<Item> DIAMOND_CHEST_ITEM
-            = itemRegistry.register("diamond_chest",
-            () -> new BlockItem(DIAMOND_CHEST_BLOCK.get(), new Item.Properties().tab(ItemGroup.TAB_DECORATIONS).setISTER(() -> DiamondChestItemStackRenderer::new))
-    );
 
     public DiamondChest() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -56,5 +54,18 @@ public class DiamondChest
 
     private void clientSetup(FMLClientSetupEvent event) {
         ClientRegistry.bindTileEntityRenderer(DIAMOND_CHEST_BLOCK_ENTITY_TYPE.get(), DiamondChestBlockEntityRenderer::new);
+    }
+
+    private static RegistryObject<Block> register(String name, Block madeOf) {
+        RegistryObject<Block> block
+                = blockRegistry.register(name,
+                () -> new DiamondChestBlock(AbstractBlock.Properties.copy(madeOf), name, name.equals("diamond_chest"))
+        );
+
+        RegistryObject<Item> item
+                = itemRegistry.register(name,
+                () -> new BlockItem(block.get(), new Item.Properties().tab(ItemGroup.TAB_DECORATIONS).setISTER(() -> DiamondChestItemStackRenderer::new))
+        );
+        return block;
     }
 }

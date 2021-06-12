@@ -1,6 +1,11 @@
 {
   "replace": false,
   "values": [
-    "diamond_chest:diamond_chest"
+    "diamond_chest:diamond_chest",
+    "diamond_chest:end_chest",
+    "diamond_chest:iron_chest",
+    "diamond_chest:nether_chest",
+    "diamond_chest:super_op_chest",
+    "diamond_chest:wood_chest"
   ]
 }

@@ -13,7 +13,7 @@
           "functions": [
             {
               "function": "minecraft:enchant_with_levels",
-              "levels": 10,
+              "levels": 50,
               "treasure": false
             }
           ]
@@ -24,7 +24,7 @@
           "functions": [
             {
               "function": "minecraft:enchant_with_levels",
-              "levels": 10,
+              "levels": 50,
               "treasure": false
             }
           ]
@@ -35,7 +35,7 @@
           "functions": [
             {
               "function": "minecraft:enchant_with_levels",
-              "levels": 10,
+              "levels": 50,
               "treasure": false
             }
           ]
@@ -46,18 +46,7 @@
           "functions": [
             {
               "function": "minecraft:enchant_with_levels",
-              "levels": 10,
-              "treasure": false
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:diamond_axe",
-          "functions": [
-            {
-              "function": "minecraft:enchant_with_levels",
-              "levels": 20,
+              "levels": 50,
               "treasure": false
             }
           ]
@@ -68,7 +57,7 @@
           "functions": [
             {
               "function": "minecraft:enchant_with_levels",
-              "levels": 20,
+              "levels": 50,
               "treasure": false
             }
           ]
@@ -79,29 +68,7 @@
           "functions": [
             {
               "function": "minecraft:enchant_with_levels",
-              "levels": 20,
-              "treasure": false
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:diamond_pickaxe",
-          "functions": [
-            {
-              "function": "minecraft:enchant_with_levels",
-              "levels": 20,
-              "treasure": false
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:diamond_hoe",
-          "functions": [
-            {
-              "function": "minecraft:enchant_with_levels",
-              "levels": 20,
+              "levels": 50,
               "treasure": false
             }
           ]
@@ -112,7 +79,40 @@
           "functions": [
             {
               "function": "minecraft:enchant_with_levels",
-              "levels": 20,
+              "levels": 50,
+              "treasure": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_pickaxe",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": 50,
+              "treasure": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_hoe",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": 50,
+              "treasure": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_axe",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": 50,
               "treasure": false
             }
           ]
@@ -127,13 +127,13 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:golden_apple",
+          "name": "minecraft:enchanted_golden_apple",
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 1,
-                "max": 2
+                "min": 16,
+                "max": 32
               }
             }
           ]
@@ -146,8 +146,8 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 5,
-                "max": 20
+                "min": 48,
+                "max": 64
               }
             }
           ]
@@ -160,36 +160,70 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 2,
-                "max": 4
+                "min": 48,
+                "max": 64
               }
             }
           ]
         },
         {
           "type": "minecraft:item",
-          "weight": 4,
+          "weight": 2,
           "name": "minecraft:gold_ingot",
           "functions": [
             {
               "function": "minecraft:set_count",
+              "count": 64
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "minecraft:totem_of_undying",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
               "count": {
-                "min": 24,
-                "max": 40
+                "min": 1,
+                "max": 3
               }
             }
           ]
         },
         {
           "type": "minecraft:item",
-          "weight": 5,
-          "name": "minecraft:iron_ingot",
+          "name": "minecraft:bow",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Enchantments: [{lvl:3s, id:\"minecraft:unbreaking\"}, {lvl: 5s, id:\"minecraft:power\"}, {lvl: 1s, id:\"minecraft:flame\"}, {lvl: 2s, id: \"minecraft:punch\"}]}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:arrow",
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 24,
-                "max": 40
+                "min": 1,
+                "max": 64
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:ender_pearl",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 8,
+                "max": 16
               }
             }
           ]
